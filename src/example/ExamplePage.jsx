@@ -1,10 +1,30 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+import './index.scss';
+import AllCards from './AllCards';
+
 export default function ExamplePage() {
+   const [cards, getCards] = useState([]);
+
+    useEffect(() => {
+    const getAllCards = async () => {
+    // eslint-disable-next-line no-template-curly-in-string
+      const { data } = await axios.get(`https://my-json-server.typicode.com/haza20/demo/cards`);
+
+      getCards(data);
+    };
+    getAllCards();
+  }, []);
+
+  
   return (
-    <main>
-      <div className="container-fluid">
-        <h1>Example Page</h1>
-        <p>Hello world!</p>
+    <div>
+      <div>
+        {cards.map((card) => (
+          <AllCards card={card} key={card.id} />
+        ))}
       </div>
-    </main>
+    </div>
   );
 }
