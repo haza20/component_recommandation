@@ -1,62 +1,33 @@
-import React from 'react';
-import PropType from 'prop-types';
-import { Card, CardDeck } from '@edx/paragon';
-
-import photo1 from '../assets/photo1.png';
-import photo2 from '../assets/photo2.png';
-import photo3 from '../assets/photo3.png';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import './index.scss';
+import Cards from './Card';
 
-const AllCards = ({ card }) => (
-  <>
-    <div className="container-fluid">
-      <CardDeck>
-        <Card>
-          <label className="label">e-learning</label>
-          <Card.ImageCap img src={photo1} />
-          <Card.Header />
-          <Card.Section className="header">
-            <small className="text-muted">Accredited: 2 points</small>
-          </Card.Section>
-          <Card.Section className="section">{card.card}</Card.Section>
-          <Card.Footer className="footer">
-            <small className="text-muted">BE-Key-0925485</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <label className="label">live webinar</label>
-          <Card.ImageCap img src={photo2} />
-          <Card.Header />
+export default function AllCards() {
+  const [cards, getCards] = useState([]);
 
-          <Card.Section className="section">
-            Maecenas sapien orci, elementum ullamcorper ipsumut, condimentum
-            varius leo.
-          </Card.Section>
-          <Card.Footer className="footer">
-            <small className="text-muted">BE-Key-0925485</small>
-          </Card.Footer>
-        </Card>
-        <Card>
-          <label className="label">e-learning</label>
-          <Card.ImageCap img src={photo3} />
-          <Card.Header />
-          <Card.Section className="header">
-            <small className="text-muted">Accredited: 2 points</small>
-          </Card.Section>
-          <Card.Section className="section">
-            Maecenas sapien orci, elementum ullamcorper ipsumut, condimentum
-            varius leo.
-          </Card.Section>
-          <Card.Footer className="footer">
-            <small className="text-muted">BE-Key-0925485</small>
-          </Card.Footer>
-        </Card>
-      </CardDeck>
+  useEffect(() => {
+    const getAllCards = async () => {
+      // eslint-disable-next-line no-template-curly-in-string
+      const { data } = await axios.get(
+        'https://my-json-server.typicode.com/haza20/demo/cards',
+      );
+
+      getCards(data);
+    };
+    getAllCards();
+  }, []);
+
+  return (
+    <div>
+      <div className="row">
+        {cards.map((card) => (
+          <div className="col-md-4" key={card.id}>
+            <Cards card={card} key={card.id} />
+          </div>
+        ))}
+      </div>
     </div>
-  </>
-);
-
-
-
-export default AllCards;
+  );
+}
