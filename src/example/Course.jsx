@@ -1,14 +1,14 @@
 import React from 'react';
-import PropType from 'prop-types';
 import { Card, CardDeck } from '@edx/paragon';
+import PropType from 'prop-types';
 // import photo2 from '../assets/photo2.png';
 // import photo3 from '../assets/photo3.png';
 
 import './index.scss';
 
-const Cards = ({ card }) => (
-  <>
-    <div className="container-fluid">
+const Course = ({ card }) => (
+  <div>
+    <div className="card-container">
       <CardDeck>
         <Card>
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -16,7 +16,7 @@ const Cards = ({ card }) => (
           <Card.ImageCap img src={card.image} />
           <Card.Header />
           <Card.Section className="header">
-            <small className="text-muted">Accredited: {card.credits} points</small>
+            <small className="text-muted credits">Accredited: {card.credits} points</small>
           </Card.Section>
           <Card.Section className="section">{card.description}</Card.Section>
           <Card.Footer className="footer">
@@ -25,21 +25,21 @@ const Cards = ({ card }) => (
         </Card>
       </CardDeck>
     </div>
-  </>
+  </div>
 );
 
-Cards.defaultProps = {
+Course.defaultProps = {
   card: {
     id: 1,
-    description: 'sqghueqygfnquzegfyafc sjfgsgfusfycgfg gchfgsfdfcchsg',
-    category: 'sdfscf',
+    description: 'Maecenas sapien orci, elementum ullamcorper ipsum ut, condimentum varius leo.condimentum varius leo. ',
+    category: 'e-learning',
     credits: '2',
-    bekey: '5',
+    bekey: '0932738 ',
     image: 'https://fv9-5.failiem.lv/thumb_show.php?i=4bss6bzk6&view',
   },
 };
 
-Cards.propTypes = {
+Course.propTypes = {
   card: PropType.shape({
     id: PropType.number,
     description: PropType.string,
@@ -50,4 +50,4 @@ Cards.propTypes = {
   }),
 };
 
-export default Cards;
+export default Course;

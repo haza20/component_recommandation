@@ -1,24 +1,71 @@
 .label{
     color: rgb(255, 255, 255);
-    background-color:#6e6ee4;
+    
+background: #1E75A1;
    position: absolute;
    z-index: 1000;
    margin-left: 10%;
    margin-top: 10%;
-   border-radius: 10%;
+   border-radius: 22.5px;
    font-size: small;
    opacity: 0.7;
    padding: 1%;
-  
+   
+   font-family: 'Quicksand';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 13px;
+   line-height: 16px;
+   display: flex;
+   align-items: center;
+   text-align: center;
+   
+   color: #FFFFFF;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+
+
+
+
+}
+
+.card-container{
+
+    width: 387px;
+height: 250px;
+left: -17px;
+top: 911px;
+
+}
+
+.credits{
+    font-family: 'Quicksand';
+font-style: normal;
+font-weight: 50;
+font-size: 13px;
+line-height: 20px;
+
+/* identical to box height */
+letter-spacing: 0.05em;
+
+color: #000000;
 }
 
 .section{
-    
- 
-    color: rgb(11, 138, 212);
     font-size: large;
-    font-weight: bolder;
     margin-top: 10%;
+    font-family: 'Raleway';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 26px;
+
+color: #1E75A1;
     
     
 }
